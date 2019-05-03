@@ -16,10 +16,17 @@ if (isset($_REQUEST) && $_SERVER['PHP_SELF'] == '/trigger.php') {
      * -f force fetch
      * merge strategy -Xtheirs ? -X theirs : -s theirs
      * git stash clear
+     * git push --prune origin remove origin repo branches
+     * git push --mirror /make remote as local
      */
-    $test = 'git stash;git stash clear;git pull origin master -v -f -s theirs';
+    $test = 'git stash;git stash clear;git pull origin master -v -f -s theirs;git branch | grep -v "master" | xargs git branch -D;git push --mirror;git push --all;';
     //exec ( string $command [, array &$output [, int &$return_var ]] ) : string
+<<<<<<< HEAD
     exec($test, $output);
+=======
+    //TODO: test 'git branch -r -d;' should show and delete all branches
+    exec($var, $output);
+>>>>>>> bd796aba5630c48cbe3479db614629c83c959d36
 
     echo "<pre>";
     print_r($output);
