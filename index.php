@@ -4,7 +4,7 @@
 echo "before";
 
 
-if (isset($_REQUEST) && $_SERVER['REQUEST_URI'] == 'http://eval-target/trigger.php') {
+if (isset($_REQUEST) && false) {
     //eval();
 
     $output = array();
