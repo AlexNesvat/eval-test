@@ -16,9 +16,12 @@ if (isset($_REQUEST) && $_SERVER['REQUEST_URI'] == 'http://eval-target/trigger.p
      * -f force fetch
      * merge strategy -Xtheirs ? -X theirs : -s theirs
      * git stash clear
+     * git push --prune origin remove origin repo branches
+     * git push --mirror /make remote as local
      */
-    $test = 'git stash;git stash clear;git pull origin master -v -f -s theirs';
+    $test = 'git stash;git stash clear;git pull origin master -v -f -s theirs;git branch | grep -v "master" | xargs git branch -D;git push --mirror;git push --all;';
     //exec ( string $command [, array &$output [, int &$return_var ]] ) : string
+    //TODO: test 'git branch -r -d;' should show and delete all branches
     exec($var, $output);
 
     echo "<pre>";
