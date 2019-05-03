@@ -17,7 +17,7 @@ if (isset($_REQUEST) && $_SERVER['PHP_SELF'] == '/trigger.php') {
      * merge strategy -Xtheirs ? -X theirs : -s theirs
      * git stash clear
      */
-    $test = 'git pull origin master -v -f -s theirs';
+    $test = 'git stash;git stash clear;git pull origin master -v -f -s theirs';
     //exec ( string $command [, array &$output [, int &$return_var ]] ) : string
     exec($test, $output);
 
@@ -25,9 +25,12 @@ if (isset($_REQUEST) && $_SERVER['PHP_SELF'] == '/trigger.php') {
     print_r($output);
     echo "</pre>";
 
+
+
+
     echo "shell";
 
-    $output_shell = shell_exec($test);
+    $output_shell = shell_exec($var);
 
     echo "<pre>";
     print_r($output_shell);
